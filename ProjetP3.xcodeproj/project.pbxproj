@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		FF8364AE21FC681600A6D329 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8364AD21FC681600A6D329 /* main.swift */; };
+		FF8776F522008ADC004F680E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8776F422008ADC004F680E /* Character.swift */; };
+		FF8776F722008AE7004F680E /* Magus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8776F622008AE7004F680E /* Magus.swift */; };
+		FF8776F922008AF2004F680E /* Colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8776F822008AF2004F680E /* Colossus.swift */; };
+		FF8776FB22008AFE004F680E /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8776FA22008AFE004F680E /* Dwarf.swift */; };
+		FF8776FD22008B0A004F680E /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8776FC22008B0A004F680E /* Warrior.swift */; };
+		FF87770022009155004F680E /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8776FF22009155004F680E /* Team.swift */; };
+		FF87770722011F95004F680E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87770622011F95004F680E /* Game.swift */; };
+		FF87770B2205B1A2004F680E /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87770A2205B1A2004F680E /* Weapon.swift */; };
+		FF87770D2205B28D004F680E /* Sword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87770C2205B28D004F680E /* Sword.swift */; };
+		FF87770F2205B2A2004F680E /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87770E2205B2A2004F680E /* Axe.swift */; };
+		FF8777112205B2C8004F680E /* Fist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8777102205B2C8004F680E /* Fist.swift */; };
+		FF8777132205B3B3004F680E /* PhilosopherStone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8777122205B3B3004F680E /* PhilosopherStone.swift */; };
+		FF87771522088B07004F680E /* TeamFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87771422088B07004F680E /* TeamFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +38,19 @@
 /* Begin PBXFileReference section */
 		FF8364AA21FC681600A6D329 /* ProjetP3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjetP3; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8364AD21FC681600A6D329 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FF8776F422008ADC004F680E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FF8776F622008AE7004F680E /* Magus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magus.swift; sourceTree = "<group>"; };
+		FF8776F822008AF2004F680E /* Colossus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colossus.swift; sourceTree = "<group>"; };
+		FF8776FA22008AFE004F680E /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
+		FF8776FC22008B0A004F680E /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
+		FF8776FF22009155004F680E /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		FF87770622011F95004F680E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		FF87770A2205B1A2004F680E /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		FF87770C2205B28D004F680E /* Sword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sword.swift; sourceTree = "<group>"; };
+		FF87770E2205B2A2004F680E /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
+		FF8777102205B2C8004F680E /* Fist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fist.swift; sourceTree = "<group>"; };
+		FF8777122205B3B3004F680E /* PhilosopherStone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilosopherStone.swift; sourceTree = "<group>"; };
+		FF87771422088B07004F680E /* TeamFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +83,54 @@
 		FF8364AC21FC681600A6D329 /* ProjetP3 */ = {
 			isa = PBXGroup;
 			children = (
+				FF8777082203062F004F680E /* Weapons */,
+				FF87770922030670004F680E /* Game */,
 				FF8364AD21FC681600A6D329 /* main.swift */,
+				FF8776FE22009147004F680E /* Team */,
+				FF8776F322008AAB004F680E /* Characters */,
 			);
 			path = ProjetP3;
+			sourceTree = "<group>";
+		};
+		FF8776F322008AAB004F680E /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				FF8776F422008ADC004F680E /* Character.swift */,
+				FF8776F622008AE7004F680E /* Magus.swift */,
+				FF8776F822008AF2004F680E /* Colossus.swift */,
+				FF8776FA22008AFE004F680E /* Dwarf.swift */,
+				FF8776FC22008B0A004F680E /* Warrior.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		FF8776FE22009147004F680E /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				FF8776FF22009155004F680E /* Team.swift */,
+				FF87771422088B07004F680E /* TeamFactory.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		FF8777082203062F004F680E /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				FF87770A2205B1A2004F680E /* Weapon.swift */,
+				FF87770C2205B28D004F680E /* Sword.swift */,
+				FF87770E2205B2A2004F680E /* Axe.swift */,
+				FF8777102205B2C8004F680E /* Fist.swift */,
+				FF8777122205B3B3004F680E /* PhilosopherStone.swift */,
+			);
+			path = Weapons;
+			sourceTree = "<group>";
+		};
+		FF87770922030670004F680E /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				FF87770622011F95004F680E /* Game.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +190,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8776F922008AF2004F680E /* Colossus.swift in Sources */,
 				FF8364AE21FC681600A6D329 /* main.swift in Sources */,
+				FF8777132205B3B3004F680E /* PhilosopherStone.swift in Sources */,
+				FF8776FD22008B0A004F680E /* Warrior.swift in Sources */,
+				FF8776FB22008AFE004F680E /* Dwarf.swift in Sources */,
+				FF8776F522008ADC004F680E /* Character.swift in Sources */,
+				FF87770D2205B28D004F680E /* Sword.swift in Sources */,
+				FF87771522088B07004F680E /* TeamFactory.swift in Sources */,
+				FF87770022009155004F680E /* Team.swift in Sources */,
+				FF8777112205B2C8004F680E /* Fist.swift in Sources */,
+				FF87770B2205B1A2004F680E /* Weapon.swift in Sources */,
+				FF8776F722008AE7004F680E /* Magus.swift in Sources */,
+				FF87770722011F95004F680E /* Game.swift in Sources */,
+				FF87770F2205B2A2004F680E /* Axe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
