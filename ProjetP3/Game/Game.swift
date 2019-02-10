@@ -16,11 +16,21 @@ class Game {
         print("===============================")
 
     }
+    func start(){
+        let gameTeams = TeamFactory()
+        gameTeams.createTeams()
+        gameTeams.showAllStats()
+    }
     
     func teamAttack(){
         print("choose the hero you want to use")
-        
+
+            
     }
+
+        
+        
+    
     
     
 

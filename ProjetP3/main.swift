@@ -11,11 +11,7 @@ import Foundation
 
 let newGame = Game()
 newGame.mainMenu()
-let équipes = TeamFactory()
-équipes.createTeams()
-équipes.showAllStats()
-
-
+newGame.start()
 
 
 //afficher type

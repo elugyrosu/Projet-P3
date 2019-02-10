@@ -154,6 +154,7 @@ class TeamFactory {
         for Team in teams {
             print("\(Team.teamName)'s characters stats")
             print("")
+            Team.charactersStatus()
         } // inserer characterStatus()
             print("===============================")
     }
