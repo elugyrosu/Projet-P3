@@ -24,6 +24,6 @@ class Character {
     // func attaquer(ennemy: Character) {
 //    character1.attack()
     func attack(enemy: Character){
-        
+        enemy.health = enemy.health - weapon.damage
     }
 }

@@ -46,29 +46,39 @@ class Game {
     
     func teamAttack(){
         var i = 0
+//        let team = teamFactory.teams
         for team in teams{
-            print("Team \(teamFactory.teams[i].teamName)")
+            print("Team \(team.teamName)")
             print("choose the hero you want to use")
-            teamFactory.teams[i].charactersStatus()
-            let heroSelected = teamFactory.teams[i].characters[choiceIndex123()]
+            team.charactersStatus()
+            let heroSelected = team.characters[choiceIndex123()]
         
-            if heroSelected.characterType.contains("Magus") {
-                print("Team \(teamFactory.teams[i].teamName)")
+            if heroSelected.characterType.contains("Magus"){
+                if let magus = heroSelected as? Magus{
+                print("Team \(team.teamName)")
                 print("choose the hero you want to treat with the Philosopher's Stone")
-                teamFactory.teams[i].charactersStatus()
-                let heroTreat = teamFactory.teams[i].characters[choiceIndex123()]
-    
+                team.charactersStatus()
+                let heroTreat = team.characters[choiceIndex123()]
+                magus.treat(treatCharacter: heroTreat)
             } else {
-                print("Team \(teamFactory.teams[i].teamName)")
+                print("Team \(team.teamName)")
                 print("choose the ennemi you want to attack")
-                teamFactory.teams[i+1].charactersStatus()
-                let enemySelected = teamFactory.teams[i+1].characters[choiceIndex123()]
+                if i == 0{
+                    teamFactory.teams[i+1].charactersStatus()
+                    let enemySelected = teamFactory.teams[i+1].characters[choiceIndex123()]
+                    heroSelected.attack(enemy: enemySelected)
+                }else{
+                    teamFactory.teams[i-1].charactersStatus()
+                    let enemySelected = teamFactory.teams[i-1].characters[choiceIndex123()]
+                    heroSelected.attack(enemy: enemySelected)
+                }
             }
-            i += 1
         }
-   
+            i += 1
+
+        }
     }
 }
-    
+
 
 
