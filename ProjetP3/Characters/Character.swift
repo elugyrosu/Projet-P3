@@ -21,5 +21,9 @@ class Character {
         self.characterType = characterType
         self.weapon = weapon
     }
-    
+    // func attaquer(ennemy: Character) {
+//    character1.attack()
+    func attack(enemy: Character){
+        
+    }
 }

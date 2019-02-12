@@ -17,7 +17,6 @@ class Team {
     init(name: String){
         self.teamName = name
     }
-    
 
     func charactersStatus() {
         
@@ -29,14 +28,11 @@ class Team {
     
     func checkNames(name: String) -> Bool{
         var check = false
-        for Character in characters
-        {   // check tous les noms rentrés
-            if Character.characterName.contains(name){
+        for character in characters{   // check tous les noms rentrés
+            if character.characterName.contains(name){
                 print("a character already has this name, you have to change it right now !")
-                
                 check = true
             }
-    
         }
      return check
     }

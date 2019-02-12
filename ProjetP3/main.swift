@@ -10,7 +10,7 @@ import Foundation
 
 
 let newGame = Game()
-newGame.mainMenu()
+
 newGame.start()
 
 

@@ -9,64 +9,66 @@
 import Foundation //menu etat
 
 class Game {
-    
-    func mainMenu() {
+    let teamFactory = TeamFactory()
+    var teams = [Team]()
+    func start(){
         print("===============================")
         print("Welcome to Dot Fantasy")
         print("===============================")
-
+        teamFactory.createTeams()
+        teams = teamFactory.teams
     }
-    func start(){
-        let gameTeams = TeamFactory()
-        gameTeams.createTeams()
-        gameTeams.showAllStats()
+    
+    func choiceIndex123() -> Int{
+        var choice = 0
+        var index = 0
+        
+        repeat {
+            if let data = readLine() {
+                if let dataToInt = Int(data) {
+                    choice = dataToInt
+                }
+            }
+        } while choice != 1 && choice != 2 && choice != 3
+        
+        switch choice{
+        case 1:
+            index = 0
+        case 2:
+            index = 1
+        case 3:
+            index = 2
+        default:
+            break
+        }
+        return index
     }
     
     func teamAttack(){
-        print("choose the hero you want to use")
-
-            
+        var i = 0
+        for team in teams{
+            print("Team \(teamFactory.teams[i].teamName)")
+            print("choose the hero you want to use")
+            teamFactory.teams[i].charactersStatus()
+            let heroSelected = teamFactory.teams[i].characters[choiceIndex123()]
+        
+            if heroSelected.characterType.contains("Magus") {
+                print("Team \(teamFactory.teams[i].teamName)")
+                print("choose the hero you want to treat with the Philosopher's Stone")
+                teamFactory.teams[i].charactersStatus()
+                let heroTreat = teamFactory.teams[i].characters[choiceIndex123()]
+    
+            } else {
+                print("Team \(teamFactory.teams[i].teamName)")
+                print("choose the ennemi you want to attack")
+                teamFactory.teams[i+1].charactersStatus()
+                let enemySelected = teamFactory.teams[i+1].characters[choiceIndex123()]
+            }
+            i += 1
+        }
+   
     }
-
-        
-        
-    
-    
-    
-
 }
     
-//    func teamOneAttack(){
-//        print("")
-//        print("===============================")
-//        print("\(teamOne.teamName), who do you want to use ?")
-//        
-//        print("1 - \(newGame.teamOne.characters[0].characterName), type: \(newGame.teamOne.characters[0].characterType), health: \(newGame.teamOne.characters[0].health) PV, Weapon: \(newGame.teamOne.characters[0].weapon.weaponName), Dammage: \(newGame.teamOne.characters[0].weapon.damage)")
-//        print("2 - \(newGame.teamOne.characters[1].characterName), type: \(newGame.teamOne.characters[1].characterType), health: \(newGame.teamOne.characters[1].health) PV, Weapon: \(newGame.teamOne.characters[1].weapon.weaponName), Dammage: \(newGame.teamOne.characters[1].weapon.damage)")
-//        print("3 - \(newGame.teamOne.characters[2].characterName), type: \(newGame.teamOne.characters[2].characterType), health: \(newGame.teamOne.characters[2].health) PV, Weapon: \(newGame.teamOne.characters[2].weapon.weaponName), Dammage: \(newGame.teamOne.characters[2].weapon.damage)")
-//        
-//        print("\(teamOne.teamName), who do you want to attack ?")
-//        
-//        print("1 - \(newGame.teamTwo.characters[0].characterName), type: \(newGame.teamTwo.characters[0].characterType), health: \(newGame.teamTwo.characters[0].health) PV, Weapon: \(newGame.teamTwo.characters[0].weapon.weaponName), Dammage: \(newGame.teamTwo.characters[0].weapon.damage)")
-//        print("2 - \(newGame.teamTwo.characters[1].characterName), type: \(newGame.teamTwo.characters[1].characterType), health: \(newGame.teamTwo.characters[1].health) PV, Weapon: \(newGame.teamTwo.characters[1].weapon.weaponName), Dammage: \(newGame.teamTwo.characters[1].weapon.damage)")
-//        print("3 - \(newGame.teamTwo.characters[2].characterName), type: \(newGame.teamTwo.characters[2].characterType), health: \(newGame.teamTwo.characters[2].health) PV, Weapon: \(newGame.teamTwo.characters[2].weapon.weaponName), Dammage: \(newGame.teamTwo.characters[2].weapon.damage)")
-//        
-//    }
-//    
-//    func teamTwoAttack(){
-//        print("")
-//        print("===============================")
-//        print("\(teamTwo.teamName), who do you want to use ?")
-//        
-//        print("1 - \(newGame.teamTwo.characters[0].characterName), type: \(newGame.teamTwo.characters[0].characterType), health: \(newGame.teamTwo.characters[0].health) PV, Weapon: \(newGame.teamTwo.characters[0].weapon.weaponName), Dammage: \(newGame.teamTwo.characters[0].weapon.damage)")
-//        print("2 - \(newGame.teamTwo.characters[1].characterName), type: \(newGame.teamTwo.characters[1].characterType), health: \(newGame.teamTwo.characters[1].health) PV, Weapon: \(newGame.teamTwo.characters[1].weapon.weaponName), Dammage: \(newGame.teamTwo.characters[1].weapon.damage)")
-//        print("3 - \(newGame.teamTwo.characters[2].characterName), type: \(newGame.teamTwo.characters[2].characterType), health: \(newGame.teamTwo.characters[2].health) PV, Weapon: \(newGame.teamTwo.characters[2].weapon.weaponName), Dammage: \(newGame.teamTwo.characters[2].weapon.damage)")
-//        
-//        print("\(teamTwo.teamName), who do you want to attack ?")
-//        
-//        print("1 - \(newGame.teamOne.characters[0].characterName), type: \(newGame.teamOne.characters[0].characterType), health: \(newGame.teamOne.characters[0].health) PV, Weapon: \(newGame.teamOne.characters[0].weapon.weaponName), Dammage: \(newGame.teamOne.characters[0].weapon.damage)")
-//        print("2 - \(newGame.teamOne.characters[1].characterName), type: \(newGame.teamOne.characters[1].characterType), health: \(newGame.teamOne.characters[1].health) PV, Weapon: \(newGame.teamOne.characters[1].weapon.weaponName), Dammage: \(newGame.teamOne.characters[1].weapon.damage)")
-//        print("3 - \(newGame.teamOne.characters[2].characterName), type: \(newGame.teamOne.characters[2].characterType), health: \(newGame.teamOne.characters[2].health) PV, Weapon: \(newGame.teamOne.characters[2].weapon.weaponName), Dammage: \(newGame.teamOne.characters[2].weapon.damage)") 
-//        
-//    }
+
 

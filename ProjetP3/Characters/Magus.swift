@@ -13,4 +13,7 @@ class Magus: Character {
         super.init(health: 80, characterName: name, characterType: "Magus", weapon: PhilospoherStone())
     }
     
+    func treat(treat: Character){
+//        character1.treat()
+    }
 }
