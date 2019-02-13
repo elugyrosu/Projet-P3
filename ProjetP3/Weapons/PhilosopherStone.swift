@@ -9,8 +9,8 @@
 import Foundation
 
 class PhilospoherStone: Weapon {
-    var healing = 20
+    
     init() {
-        super.init(damage: 0, weaponName: "Philosopher's stone")
+        super.init(damage: 0, weaponName: "Philosopher's stone", power: 20)
     }
 }

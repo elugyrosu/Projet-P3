@@ -11,7 +11,7 @@ import Foundation
 class Sword: Weapon{
     
     init() {
-        super.init(damage: 10, weaponName: "Sword")
+        super.init(damage: 10, weaponName: "Sword", power: 0)
     }
     
 }

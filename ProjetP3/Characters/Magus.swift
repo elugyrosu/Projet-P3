@@ -9,12 +9,11 @@
 import Foundation
 
 class Magus: Character {
-    let treat = 20
     init(name: String) {
         super.init(health: 80, characterName: name, characterType: "Magus", weapon: PhilospoherStone())
     }
     
     func treat(treatCharacter: Character){
-        treatCharacter.health = treatCharacter.health + treat
+        treatCharacter.health = treatCharacter.health + PhilospoherStone().power
     }
 }
