@@ -53,46 +53,33 @@ class Game {
             team.charactersStatus()
             let heroSelected = team.characters[choiceIndex123()]
         
-            if heroSelected.characterType.contains("Magus"){
+            if heroSelected.characterType.contains("Magus"){ // soin
                 if let magus = heroSelected as? Magus{
                 print("Team \(team.teamName)")
                 print("choose the hero you want to treat with the Philosopher's Stone")
                 team.charactersStatus()
                 let heroTreat = team.characters[choiceIndex123()]
-                magus.treat(treatCharacter: heroTreat)
-                print("\(heroSelected.characterName) treat \(heroTreat.characterName) with the \(heroSelected.weapon.weaponName)")
-                print("+\(heroSelected.weapon.power)")
-                print("\(heroTreat.characterName)'s health is \(heroTreat.health) PV now")
+                magus.treat(magus: magus, treatedHero: heroTreat)
                 }
             } else {
                 print("Team \(team.teamName)")
                 print("choose the ennemi you want to attack")
-                    
-                if i == 0{
+                if i == 0{                                              // player one
                     teamFactory.teams[i+1].charactersStatus()
                     let enemySelected = teamFactory.teams[i+1].characters[choiceIndex123()]
-                    heroSelected.attack(enemy: enemySelected)
-                    print("\(heroSelected.characterName) attack \(enemySelected.characterName) with the \(heroSelected.weapon.weaponName)")
-                    print("-\(heroSelected.weapon.power)")
-                    print("\(heroSelected.characterName)'s health is \(enemySelected.health) PV now")
+                    heroSelected.attack(hero: heroSelected, enemy: enemySelected)
                 }else{
-                    teamFactory.teams[i-1].charactersStatus()
+                    teamFactory.teams[i-1].charactersStatus()           // player two
                     let enemySelected = teamFactory.teams[i-1].characters[choiceIndex123()]
-                    heroSelected.attack(enemy: enemySelected)
-                    print("\(heroSelected.characterName) attack \(enemySelected.characterName) with the \(heroSelected.weapon.weaponName)")
-                    print("-\(heroSelected.weapon.power)")
-                    print("\(heroSelected.characterName)'s health is \(enemySelected.health) PV now")
+                    heroSelected.attack(hero: heroSelected, enemy: enemySelected)
                 }
             }
             i += 1
         }
     }
-    
-    func death(){
-        
-    }
-    
+
+
+
+
+
 }
-
-
-

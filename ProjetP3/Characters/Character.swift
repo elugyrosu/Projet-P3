@@ -22,7 +22,19 @@ class Character {
         self.weapon = weapon
     }
 
-    func attack(enemy: Character){
+    func attack(hero: Character, enemy: Character){
         enemy.health = enemy.health - weapon.damage
+        print("\(hero.characterName) attack \(enemy.characterName) with the \(hero.weapon.weaponName)")
+        print("-\(hero.weapon.power)")
+        print("\(hero.characterName)'s health is \(enemy.health) PV now")
+    }
+    
+    func checkHealth(character: Character) -> Bool{
+        var check = false
+        if character.health<=0{
+            print("\(character.characterName) is dead")
+            check = true
+        }
+        return check
     }
 }

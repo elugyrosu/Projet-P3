@@ -36,5 +36,17 @@ class Team {
         }
      return check
     }
-        
+    
+    
+    }
+//    func checkAlldead() -> Bool{
+//        var check = false
+//        for character in characters{
+//            if character.checkHealth(character: character){
+//                check = true
+//            }
+//        }
+//        return check
+//    }
+    
 }

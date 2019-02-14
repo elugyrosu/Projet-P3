@@ -13,7 +13,10 @@ class Magus: Character {
         super.init(health: 80, characterName: name, characterType: "Magus", weapon: PhilospoherStone())
     }
     
-    func treat(treatCharacter: Character){
-        treatCharacter.health = treatCharacter.health + PhilospoherStone().power
+    func treat(magus: Character, treatedHero: Character){
+        treatedHero.health = treatedHero.health + PhilospoherStone().power
+        print("\(magus.characterName) treat \(treatedHero.characterName) with the \(magus.weapon.weaponName)")
+        print("+\(magus.weapon.power)")
+        print("\(treatedHero.characterName)'s health is \(treatedHero.health) PV now")
     }
 }
