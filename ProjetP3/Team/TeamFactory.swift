@@ -128,9 +128,16 @@ class TeamFactory {
         } while name == ""
         return name
     }
-
     
-   private func showAllStats() {
+    func checkAllteams(teams: [Team]) -> Int{
+        var i = 0
+        for team in teams{
+            i = i + team.checkAlldead(team: team)
+        }
+        return i
+    }
+    
+    private func showAllStats() {
         print("")
         print("===============================")
         print("All characters status")

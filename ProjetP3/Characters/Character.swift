@@ -29,12 +29,13 @@ class Character {
         print("\(hero.characterName)'s health is \(enemy.health) PV now")
     }
     
-    func checkHealth(character: Character) -> Bool{
-        var check = false
+    func checkHealth(character: Character) -> Int{
+        
+        var i = 1
         if character.health<=0{
             print("\(character.characterName) is dead")
-            check = true
+            i = 0
         }
-        return check
+        return i
     }
 }

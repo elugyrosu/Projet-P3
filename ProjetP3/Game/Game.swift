@@ -63,7 +63,7 @@ class Game {
                 }
             } else {
                 print("Team \(team.teamName)")
-                print("choose the ennemi you want to attack")
+                print("choose the ennemi you want to attack")   // rendre ça compatible pour plus de players (utiliser des modulo% ?)
                 if i == 0{                                              // player one
                     teamFactory.teams[i+1].charactersStatus()
                     let enemySelected = teamFactory.teams[i+1].characters[choiceIndex123()]
@@ -79,6 +79,22 @@ class Game {
     }
 
 
+    
+    
+    func teamDefeat(team: Team){
+        if team.checkAlldead(team: team) == 0 {
+            print("l'équipe \(team.teamName) a perdu")
+        }
+    }
+    
+    
+    func winner(teams: [Team], teamWinnerName: String){
+
+        if teamFactory.checkAllteams(teams: teams) <= 1 {
+            print("Congratulation \(teamWinnerName) win the party !")
+        }
+    }
+ 
 
 
 

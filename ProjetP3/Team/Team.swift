@@ -37,16 +37,12 @@ class Team {
      return check
     }
     
-    
+    func checkAlldead(team: Team) -> Int{
+        var i = 0
+        for character in characters{
+            i = i + character.checkHealth(character: character)
+        }
+        return i
     }
-//    func checkAlldead() -> Bool{
-//        var check = false
-//        for character in characters{
-//            if character.checkHealth(character: character){
-//                check = true
-//            }
-//        }
-//        return check
-//    }
-    
+
 }
