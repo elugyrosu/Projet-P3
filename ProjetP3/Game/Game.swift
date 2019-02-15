@@ -47,55 +47,81 @@ class Game {
     func teamAttack(){
         var i = 0
 //        let team = teamFactory.teams
-        for team in teams{
+        repeat {
+            for team in teams{
             print("Team \(team.teamName)")
             print("choose the hero you want to use")
             team.charactersStatus()
             let heroSelected = team.characters[choiceIndex123()]
         
-            if heroSelected.characterType.contains("Magus"){ // soin
-                if let magus = heroSelected as? Magus{
-                print("Team \(team.teamName)")
-                print("choose the hero you want to treat with the Philosopher's Stone")
-                team.charactersStatus()
-                let heroTreat = team.characters[choiceIndex123()]
-                magus.treat(magus: magus, treatedHero: heroTreat)
+                if heroSelected.characterType.contains("Magus"){ // soin
+                    if let magus = heroSelected as? Magus{
+                        print("Team \(team.teamName)")
+                        print("choose the hero you want to treat with the Philosopher's Stone")
+                        team.charactersStatus()
+                        let heroTreat = team.characters[choiceIndex123()]
+                        magus.treat(magus: magus, treatedHero: heroTreat)
                 }
             } else {
                 print("Team \(team.teamName)")
                 print("choose the ennemi you want to attack")   // rendre ça compatible pour plus de players (utiliser des modulo% ?)
-                if i == 0{                                              // player one
-                    teamFactory.teams[i+1].charactersStatus()
-                    let enemySelected = teamFactory.teams[i+1].characters[choiceIndex123()]
+                if i == 0{
+                    let teamEnemy = teamFactory.teams[i+1]                                                                            // player one
+                    teamEnemy.charactersStatus()
+                    let enemySelected = teamEnemy.characters[choiceIndex123()]
                     heroSelected.attack(hero: heroSelected, enemy: enemySelected)
+                    attackResults(teams: teams, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
+                    
                 }else{
-                    teamFactory.teams[i-1].charactersStatus()           // player two
-                    let enemySelected = teamFactory.teams[i-1].characters[choiceIndex123()]
+                    let teamEnemy = teamFactory.teams[i-1]
+                    teamEnemy.charactersStatus()           // player two
+                    let enemySelected = teamEnemy.characters[choiceIndex123()]
                     heroSelected.attack(hero: heroSelected, enemy: enemySelected)
-                }
+                    attackResults(teams: teams, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
+                    }
             }
             i += 1
-        }
+            }
+        } while end(teams: teams) == false
     }
-
-
     
-    
-    func teamDefeat(team: Team){
+    func teamDefeat(team: Team) -> Bool{
+        var check = false
         if team.checkAlldead(team: team) == 0 {
             print("l'équipe \(team.teamName) a perdu")
+            check = true
         }
+        return check
     }
     
+    func enemyDeath(enemy: Character) -> Bool{
+        var check = false
+        if enemy.checkHealth(character: enemy) == 0{
+            check = true
+        }
+        return check
+    }
     
-    func winner(teams: [Team], teamWinnerName: String){
-
+    func end(teams: [Team]) -> Bool{
+        var check = false
         if teamFactory.checkAllteams(teams: teams) <= 1 {
-            print("Congratulation \(teamWinnerName) win the party !")
+            check = true
+        }
+        return check
+    }
+    func winner(teamWinnerName: String){
+        print("Congratulation \(teamWinnerName) win the party !")
+        
+    }
+
+    func attackResults(teams: [Team], enemy: Character, teamEnemy: Team, teamPlayerName: String){
+        if enemyDeath(enemy: enemy) == true{
+            if teamDefeat(team: teamEnemy) == true{
+                if end(teams: teams) == true{
+                    winner(teamWinnerName: teamPlayerName)
+                }
+            }
         }
     }
- 
-
-
 
 }
