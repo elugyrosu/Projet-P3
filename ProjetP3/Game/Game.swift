@@ -44,59 +44,75 @@ class Game {
         return index
     }
     
-    func teamAttack(){
+    func Battle(){
         var i = 0
 //        let team = teamFactory.teams
         repeat {
             for team in teams{
-            print("Team \(team.teamName)")
-            print("choose the hero you want to use")
-            team.charactersStatus()
-            let heroSelected = team.characters[choiceIndex123()]
-        
-                if heroSelected.characterType.contains("Magus"){ // soin
-                    if let magus = heroSelected as? Magus{
-                        print("Team \(team.teamName)")
-                        print("choose the hero you want to treat with the Philosopher's Stone")
-                        team.charactersStatus()
-                        let heroTreat = team.characters[choiceIndex123()]
-                        magus.treat(magus: magus, treatedHero: heroTreat)
-                }
-            } else {
-                print("Team \(team.teamName)")
-                print("choose the ennemi you want to attack")   // rendre ça compatible pour plus de players (utiliser des modulo% ?)
-                if i == 0{
-                    let teamEnemy = teamFactory.teams[i+1]                                                                            // player one
-                    teamEnemy.charactersStatus()
-                    let enemySelected = teamEnemy.characters[choiceIndex123()]
-                    heroSelected.attack(hero: heroSelected, enemy: enemySelected)
-                    attackResults(teams: teams, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
+                
+                while teamDefeat(team: team) == false{
+                    print("Team \(team.teamName)")
+                    print("choose the hero you want to use")
+                    let heroSelected = chooseCharacterNoPrint(team: team)
                     
-                }else{
-                    let teamEnemy = teamFactory.teams[i-1]
-                    teamEnemy.charactersStatus()           // player two
-                    let enemySelected = teamEnemy.characters[choiceIndex123()]
-                    heroSelected.attack(hero: heroSelected, enemy: enemySelected)
-                    attackResults(teams: teams, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
+                    if heroSelected.characterType.contains("Magus"){ // soin
+                        if let magus = heroSelected as? Magus{
+                            print("Team \(team.teamName)")
+                            print("choose the hero you want to treat with the \(magus.weapon.weaponName)")
+                            team.charactersStatus()
+                            let heroTreat = chooseCharacterNoPrint(team: team)
+                            magus.treat(magus: magus, treatedHero: heroTreat)
+                        }
+                    }else {
+                        print("Team \(team.teamName)")
+                        print("choose the ennemi you want to attack")   // rendre ça compatible pour plus de players (utiliser des modulo% ?)
+                        if i == 0{
+                            let teamEnemy = teamFactory.teams[i+1]                                                                            // player one
+                            teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
+                    
+                        }else{
+                            let teamEnemy = teamFactory.teams[i-1]
+                            teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
+                        }
                     }
-            }
-            i += 1
+                }
+                
+                i += 1
             }
         } while end(teams: teams) == false
     }
     
-    func teamDefeat(team: Team) -> Bool{
+    
+    
+   
+    func chooseCharacterNoPrint(team: Team) -> Character{
+        team.charactersStatus()
+        var characterSelected = team.characters[choiceIndex123()]
+        while deadOrNot(character: characterSelected) == true{
+            let choice = team.characters[choiceIndex123()]
+            characterSelected = choice
+        }
+        return characterSelected
+    }
+    
+    func teamAttack(teamEnemy: Team, heroSelected: Character, team: Team){
+     
+        let enemySelected = chooseCharacterNoPrint(team: teamEnemy)
+        heroSelected.attack(hero: heroSelected, enemy: enemySelected)
+        attackResults(teams: teams, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
+    }
+    
+    func deadOrNot(character: Character) -> Bool{
         var check = false
-        if team.checkAlldead(team: team) == 0 {
-            print("l'équipe \(team.teamName) a perdu")
+        if character.checkHealth(character: character) == 0{
             check = true
         }
         return check
     }
-    
-    func enemyDeath(enemy: Character) -> Bool{
+    func teamDefeat(team: Team) -> Bool{
         var check = false
-        if enemy.checkHealth(character: enemy) == 0{
+        if team.checkAlldead(team: team) == 0 {
+            print("l'équipe \(team.teamName) a perdu")
             check = true
         }
         return check
@@ -115,7 +131,7 @@ class Game {
     }
 
     func attackResults(teams: [Team], enemy: Character, teamEnemy: Team, teamPlayerName: String){
-        if enemyDeath(enemy: enemy) == true{
+        if deadOrNot(character: enemy) == true{
             if teamDefeat(team: teamEnemy) == true{
                 if end(teams: teams) == true{
                     winner(teamWinnerName: teamPlayerName)
