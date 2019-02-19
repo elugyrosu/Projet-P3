@@ -62,7 +62,8 @@ class TeamFactory {
     private func createTeam() -> Team{
         let team = Team(name: uniqueTeamName())
         print("===============================")
-        print("Team \(team.teamName), you will choose 3 characters,")
+        print("")
+        print("Team \(team.teamName), you will choose 3 characters:")
         team.characters = createCharacters()
         return team
     }
@@ -153,7 +154,7 @@ class TeamFactory {
         print("===============================")
         print("")
         for team in teams {
-            print("\(team.teamName)'s characters stats:")
+            print("\(team.teamName)'s characters status:")
             print("")
             team.charactersStatus()
             print("")

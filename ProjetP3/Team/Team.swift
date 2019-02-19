@@ -19,25 +19,20 @@ class Team {
     }
 
     func charactersStatus() {
-        
+        print("")
         for i in 0..<characters.count {
             let character = characters[i]
-            print("\(i+1) - \(character.characterName) (Type: \(character.characterType) - Health: \(character.health) PV - Weapon: \(character.weapon.weaponName) - Damage: \(character.weapon.damage))")
+            print("\(i+1) - \(character.characterName) (Type: \(character.characterType) - Health: \(character.health)/\(character.healthMax)PV - Weapon: \(character.weapon.weaponName) - Damage: \(character.weapon.damage))")
         }
     }
     
     func isTeamdead() -> Bool{
-        var isAllDead = false
         for character in characters{
-            if character.isDead() == true{
-                print("l'équipe \(teamName) a perdu")
-                isAllDead = true
-                
-            }else{
+            if character.isDeadNoPrint() == false{
                 return false
             }
         }
-        return isAllDead
+            return true
     }
 
 }

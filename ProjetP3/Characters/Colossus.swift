@@ -10,6 +10,6 @@ import Foundation
 
 class Colossus: Character {
     init(name: String) {
-        super.init(health: 150, characterName: name, characterType: "Colossus", weapon: Fist())
+        super.init(healthMax: 150, health: 150, characterName: name, characterType: "Colossus", weapon: Fist())
     }
 }

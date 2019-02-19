@@ -10,11 +10,14 @@ import Foundation
 
 class Magus: Character {
     init(name: String) {
-        super.init(health: 80, characterName: name, characterType: "Magus", weapon: PhilospoherStone())
+        super.init(healthMax: 80, health: 80, characterName: name, characterType: "Magus", weapon: PhilospoherStone())
     }
     
     func treat(treatedHero: Character){
         treatedHero.health = treatedHero.health + weapon.power
+        if treatedHero.health > treatedHero.healthMax{
+            treatedHero.health = treatedHero.healthMax
+        }
         print("\(characterName) treat \(treatedHero.characterName) with the \(weapon.weaponName)")
         print("+\(weapon.power)")
         print("\(treatedHero.characterName)'s health is \(treatedHero.health) PV now")

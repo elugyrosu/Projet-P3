@@ -12,7 +12,6 @@ import Foundation
 let newGame = Game()
 
 newGame.start()
-newGame.Battle()
 
 //afficher type
 //l'état de tout le monde

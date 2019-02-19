@@ -11,12 +11,14 @@ import Foundation //menu etat
 class Game {
     let teamFactory = TeamFactory()
     var teams = [Team]()
+    
     func start(){
         print("===============================")
         print("Welcome to Dot Fantasy")
         print("===============================")
         teamFactory.createTeams()
         teams = teamFactory.teams
+        Battle()
     }
     
     func choiceIndex123() -> Int{
@@ -45,28 +47,38 @@ class Game {
     }
     
     func Battle(){
-//        var i = 0
-//        let team = teamFactory.teams
+
         repeat {
             for i in 0..<teams.count{
                 let team = teams[i]
-                while team.isTeamdead() == false{
+                if team.isTeamdead() == false{
+                    print("")
+                    print("===============================")
                     print("Team \(team.teamName)")
-                    print("choose the hero you want to use")
+                    print("===============================")
+                    print("choose the HERO you want to USE:")
+                    print("")
                     let heroSelected = chooseCharacterNoPrint(team: team)
                     
                     if let magus = heroSelected as? Magus{
+                        print("")
+                        print("===============================")
                         print("Team \(team.teamName)")
-                        print("choose the hero you want to treat with the \(magus.weapon.weaponName)")
-                        team.charactersStatus()
+                        print("===============================")
+                        print("choose the HERO you want to TREAT with the \(magus.weapon.weaponName):")
+                        print("")
                         let heroTreat = chooseCharacterNoPrint(team: team)
                         magus.treat(treatedHero: heroTreat)
                     
                     }else {
+                        print("")
+                        print("===============================")
                         print("Team \(team.teamName)")
-                        print("choose the ennemi you want to attack")
+                        print("===============================")
+                        print("choose the ENEMY you want to ATTACK")
+                        print("")
                         if i == 0{
-                            let teamEnemy = teamFactory.teams[i+1]                                                                            // player one
+                            let teamEnemy = teamFactory.teams[i+1]    
                             teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
                     
                         }else{
@@ -75,8 +87,6 @@ class Game {
                         }
                     }
                 }
-                
-//                i += 1
             }
         } while teamFactory.checkAllteams() == false
     }
@@ -95,7 +105,7 @@ class Game {
     func teamAttack(teamEnemy: Team, heroSelected: Character, team: Team){
      
         let enemySelected = chooseCharacterNoPrint(team: teamEnemy)
-        heroSelected.attack(enemy: enemySelected)
+        heroSelected.attack(hero: heroSelected, enemy: enemySelected)
         attackResults(teams: teamFactory, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
     }
     
