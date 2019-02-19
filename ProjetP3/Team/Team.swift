@@ -26,23 +26,29 @@ class Team {
         }
     }
     
-    func checkNames(name: String) -> Bool{
-        var check = false
-        for character in characters{   // check tous les noms rentrés
-            if character.characterName.contains(name){
-                print("a character already has this name, you have to change it right now !")
-                check = true
+//    func checkNames(name: String) -> String{
+//        var nameChecked = name
+//        for character in characters{   // check tous les noms rentrés
+//            if character.characterName.contains(name){
+//                print("a hero already have this name, you have to change it right now:")
+//                nameChecked = ""
+//            }
+//        }
+//     return nameChecked
+//    }
+    
+    func isTeamdead() -> Bool{
+        var isAllDead = false
+        for character in characters{
+            if character.isDead() == true{
+                print("l'équipe \(teamName) a perdu")
+                isAllDead = true
+                
+            }else{
+                return false
             }
         }
-     return check
-    }
-    
-    func checkAlldead(team: Team) -> Int{
-        var i = 0
-        for character in characters{
-            i = i + character.checkHealth(character: character)
-        }
-        return i
+        return isAllDead
     }
 
 }

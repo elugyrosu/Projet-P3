@@ -32,7 +32,8 @@ class TeamFactory {
         switch choice {
         case 1:
             warriorSelected()
-            return Warrior(name: uniqueCharacterName())
+            let warrior = Warrior(name: uniqueCharacterName())
+            return warrior
         case 2:
             colossusSelected()
             return Colossus(name: uniqueCharacterName())
@@ -81,10 +82,10 @@ class TeamFactory {
             if let data = readLine(){
                 name = data
             }
-            for Team in teams {   // check tous les noms rentrés
-                if Team.teamName.contains(name){
-                print("a team already has this name, you have to change it right now !")
-                name = ""
+            for team in teams {   // check tous les noms rentrés
+                if team.teamName.contains(name){
+                    print("a team already has this name, you have to change it right now !")
+                    name = ""
                 }
             }
         }while name == ""
@@ -111,30 +112,39 @@ class TeamFactory {
         print("So... you choosed a very old and very heary thing, wearing a purple robe and a purple hat bigger than me ?")
     }
     private func uniqueCharacterName() -> String {
+        print("")
+        print("===============================")
+        print("who is he or she or it (maybe not a binary genre) ?")
         var name = ""
         repeat {
-            print("")
-            print("===============================")
-            print("who is he or she or it (maybe not a binary genre) ?")
             print("Gimme a name:")
             if let data: String = readLine() {
                 name = data
             }
             for team in teams{
-                if team.checkNames(name: name) == true{
-                    name = ""
+                for character in team.characters{   // check tous les noms rentrés
+                    if character.characterName.contains(name){
+                        print("a hero already have this name, you have to change it right now:")
+                        name = ""
+                    }
                 }
             }
-        } while name == ""
+        }while name == ""
         return name
     }
     
-    func checkAllteams(teams: [Team]) -> Int{
+    func checkAllteams() -> Bool{
+        var checkAllteams = false
         var i = 0
         for team in teams{
-            i = i + team.checkAlldead(team: team)
+            if team.isTeamdead() == false{
+                i += 1
+            }
         }
-        return i
+        if i <= 1{
+            checkAllteams = true
+        }
+        return checkAllteams
     }
     
     private func showAllStats() {

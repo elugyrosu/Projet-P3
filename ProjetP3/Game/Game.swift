@@ -45,27 +45,26 @@ class Game {
     }
     
     func Battle(){
-        var i = 0
+//        var i = 0
 //        let team = teamFactory.teams
         repeat {
-            for team in teams{
-                
-                while teamDefeat(team: team) == false{
+            for i in 0..<teams.count{
+                let team = teams[i]
+                while team.isTeamdead() == false{
                     print("Team \(team.teamName)")
                     print("choose the hero you want to use")
                     let heroSelected = chooseCharacterNoPrint(team: team)
                     
-                    if heroSelected.characterType.contains("Magus"){ // soin
-                        if let magus = heroSelected as? Magus{
-                            print("Team \(team.teamName)")
-                            print("choose the hero you want to treat with the \(magus.weapon.weaponName)")
-                            team.charactersStatus()
-                            let heroTreat = chooseCharacterNoPrint(team: team)
-                            magus.treat(magus: magus, treatedHero: heroTreat)
-                        }
+                    if let magus = heroSelected as? Magus{
+                        print("Team \(team.teamName)")
+                        print("choose the hero you want to treat with the \(magus.weapon.weaponName)")
+                        team.charactersStatus()
+                        let heroTreat = chooseCharacterNoPrint(team: team)
+                        magus.treat(treatedHero: heroTreat)
+                    
                     }else {
                         print("Team \(team.teamName)")
-                        print("choose the ennemi you want to attack")   // rendre ça compatible pour plus de players (utiliser des modulo% ?)
+                        print("choose the ennemi you want to attack")
                         if i == 0{
                             let teamEnemy = teamFactory.teams[i+1]                                                                            // player one
                             teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
@@ -77,18 +76,16 @@ class Game {
                     }
                 }
                 
-                i += 1
+//                i += 1
             }
-        } while end(teams: teams) == false
+        } while teamFactory.checkAllteams() == false
     }
-    
-    
     
    
     func chooseCharacterNoPrint(team: Team) -> Character{
         team.charactersStatus()
         var characterSelected = team.characters[choiceIndex123()]
-        while deadOrNot(character: characterSelected) == true{
+        while characterSelected.isDead() == true{
             let choice = team.characters[choiceIndex123()]
             characterSelected = choice
         }
@@ -98,43 +95,16 @@ class Game {
     func teamAttack(teamEnemy: Team, heroSelected: Character, team: Team){
      
         let enemySelected = chooseCharacterNoPrint(team: teamEnemy)
-        heroSelected.attack(hero: heroSelected, enemy: enemySelected)
-        attackResults(teams: teams, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
+        heroSelected.attack(enemy: enemySelected)
+        attackResults(teams: teamFactory, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
     }
     
-    func deadOrNot(character: Character) -> Bool{
-        var check = false
-        if character.checkHealth(character: character) == 0{
-            check = true
-        }
-        return check
-    }
-    func teamDefeat(team: Team) -> Bool{
-        var check = false
-        if team.checkAlldead(team: team) == 0 {
-            print("l'équipe \(team.teamName) a perdu")
-            check = true
-        }
-        return check
-    }
-    
-    func end(teams: [Team]) -> Bool{
-        var check = false
-        if teamFactory.checkAllteams(teams: teams) <= 1 {
-            check = true
-        }
-        return check
-    }
-    func winner(teamWinnerName: String){
-        print("Congratulation \(teamWinnerName) win the party !")
-        
-    }
 
-    func attackResults(teams: [Team], enemy: Character, teamEnemy: Team, teamPlayerName: String){
-        if deadOrNot(character: enemy) == true{
-            if teamDefeat(team: teamEnemy) == true{
-                if end(teams: teams) == true{
-                    winner(teamWinnerName: teamPlayerName)
+    func attackResults(teams: TeamFactory, enemy: Character, teamEnemy: Team, teamPlayerName: String){
+        if enemy.isDead() == true{
+            if teamEnemy.isTeamdead() == true{
+                if teams.checkAllteams() == true{
+                    print("Congratulation \(teamPlayerName) win the party !")
                 }
             }
         }
