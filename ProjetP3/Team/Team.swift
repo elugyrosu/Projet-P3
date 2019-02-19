@@ -26,17 +26,6 @@ class Team {
         }
     }
     
-//    func checkNames(name: String) -> String{
-//        var nameChecked = name
-//        for character in characters{   // check tous les noms rentrés
-//            if character.characterName.contains(name){
-//                print("a hero already have this name, you have to change it right now:")
-//                nameChecked = ""
-//            }
-//        }
-//     return nameChecked
-//    }
-    
     func isTeamdead() -> Bool{
         var isAllDead = false
         for character in characters{

@@ -10,6 +10,7 @@ import Foundation
 
 class TeamFactory {
     var teams = [Team]()
+    var charactersName = [String]()
     
     private func createCharacter(index: Int) -> Character? {
         var choice = 0
@@ -53,6 +54,7 @@ class TeamFactory {
         for i in 0..<3 {
             guard let character = createCharacter(index: i) else { return characters }
             characters.append(character)
+            charactersName.append(character.characterName)
         }
         
         return characters
@@ -121,13 +123,10 @@ class TeamFactory {
             if let data: String = readLine() {
                 name = data
             }
-            for team in teams{
-                for character in team.characters{   // check tous les noms rentrés
-                    if character.characterName.contains(name){
-                        print("a hero already have this name, you have to change it right now:")
-                        name = ""
-                    }
-                }
+            if charactersName.contains(name){
+                print("")
+                print("a Hero already have this name")
+                name = ""
             }
         }while name == ""
         return name
