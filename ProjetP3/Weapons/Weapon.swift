@@ -11,7 +11,7 @@ import Foundation
 class Weapon {
     let weaponName: String
     let damage: Int
-    let power: Int
+    let power: Int          //only for Magus
     
     init (damage: Int, weaponName: String, power: Int){
         self.damage = damage

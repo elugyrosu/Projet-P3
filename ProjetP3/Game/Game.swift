@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jordan MOREAU. All rights reserved.
 //
 
-import Foundation //menu etat
+import Foundation
 
 class Game {
     let teamFactory = TeamFactory()
@@ -21,7 +21,43 @@ class Game {
         Battle()
     }
     
-    func choiceIndex123() -> Int{
+    func Battle(){ 
+        repeat {
+            for i in 0..<teams.count{   
+                let team = teams[i]
+                if team.isTeamDefeat() == false{           // check if team can play, else go to team after
+                    teamNamePrint(team: team)
+                    print("choose the HERO you want to USE:")               // choose Character to use
+                    print("")
+                    let heroSelected = chooseCharacter(team: team)
+                    func chooseEnemy(){                                     // function directly created in Battle() to improve visibility (to much properties)
+                        teamNamePrint(team: team)                           // improved for a two player Game, need to be change on a team selection interface if more players
+                        print("choose the ENEMY you want to ATTACK")
+                        print("")
+                        if i == 0{
+                            let teamEnemy = teamFactory.teams[i+1]
+                            teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
+                            
+                        }else{
+                            let teamEnemy = teamFactory.teams[i-1]
+                            teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
+                        }
+                    }
+                    if let magus = heroSelected as? Magus{                     // if character selected is a Magus you can treat all characters of your team who are not dead
+                        if team.isCharacterAlone() == false{
+                            teamNamePrint(team: team)
+                            print("choose the HERO you want to TREAT with the \(magus.weapon.weaponName):")
+                            print("")
+                            let heroTreat = chooseCharacter(team: team)
+                            magus.treat(treatedHero: heroTreat)
+                        }else{ chooseEnemy()}                                     // if Magus is alone, he can just attack with his specific weapon (battle balance, in case of 1 Magus vs 1 Magus)}
+                    }else {chooseEnemy()}                  // if Character is other type: Attack
+                }
+            }
+        } while teamFactory.isEnd() == false // 1 team = end of the battle
+    }
+    
+    func choiceIndex123() -> Int{     // user character choice (Characters selections)
         var choice = 0
         var index = 0
         
@@ -45,75 +81,30 @@ class Game {
         }
         return index
     }
-    
-    func Battle(){
-
-        repeat {
-            for i in 0..<teams.count{
-                let team = teams[i]
-                if team.isTeamdead() == false{
-                    print("")
-                    print("===============================")
-                    print("Team \(team.teamName)")
-                    print("===============================")
-                    print("choose the HERO you want to USE:")
-                    print("")
-                    let heroSelected = chooseCharacterNoPrint(team: team)
-                    
-                    if let magus = heroSelected as? Magus{
-                        print("")
-                        print("===============================")
-                        print("Team \(team.teamName)")
-                        print("===============================")
-                        print("choose the HERO you want to TREAT with the \(magus.weapon.weaponName):")
-                        print("")
-                        let heroTreat = chooseCharacterNoPrint(team: team)
-                        magus.treat(treatedHero: heroTreat)
-                    
-                    }else {
-                        print("")
-                        print("===============================")
-                        print("Team \(team.teamName)")
-                        print("===============================")
-                        print("choose the ENEMY you want to ATTACK")
-                        print("")
-                        if i == 0{
-                            let teamEnemy = teamFactory.teams[i+1]    
-                            teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
-                    
-                        }else{
-                            let teamEnemy = teamFactory.teams[i-1]
-                            teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
-                        }
-                    }
-                }
-            }
-        } while teamFactory.checkAllteams() == false
-    }
-    
-   
-    func chooseCharacterNoPrint(team: Team) -> Character{
-        team.charactersStatus()
-        var characterSelected = team.characters[choiceIndex123()]
-        while characterSelected.isDead() == true{
-            let choice = team.characters[choiceIndex123()]
+    func chooseCharacter(team: Team) -> Character{
+        team.charactersStatus()                                 // Just prints with stats and DEAD
+        var characterSelected = team.characters[choiceIndex123()]   //first selection
+        while characterSelected.isDead() == true{           // check if the Character can be used (no selection, attack or treat if dead)
+            let choice = team.characters[choiceIndex123()]  //selection if dead
             characterSelected = choice
         }
         return characterSelected
     }
-    
-    func teamAttack(teamEnemy: Team, heroSelected: Character, team: Team){
-     
-        let enemySelected = chooseCharacterNoPrint(team: teamEnemy)
+    func teamAttack(teamEnemy: Team, heroSelected: Character, team: Team){ // choise enemy, attack, results and checks
+        let enemySelected = chooseCharacter(team: teamEnemy)
         heroSelected.attack(hero: heroSelected, enemy: enemySelected)
         attackResults(teams: teamFactory, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
     }
-    
-
-    func attackResults(teams: TeamFactory, enemy: Character, teamEnemy: Team, teamPlayerName: String){
+    func teamNamePrint(team: Team){
+        print("")
+        print("===============================")
+        print("Team \(team.teamName)")
+        print("===============================")
+    }
+    func attackResults(teams: TeamFactory, enemy: Character, teamEnemy: Team, teamPlayerName: String){      //check and print: enemy dead, team defeat and winner
         if enemy.isDead() == true{
-            if teamEnemy.isTeamdead() == true{
-                if teams.checkAllteams() == true{
+            if teamEnemy.isTeamDefeat() == true{
+                if teams.isEnd() == true{
                     print("Congratulation \(teamPlayerName) win the party !")
                 }
             }

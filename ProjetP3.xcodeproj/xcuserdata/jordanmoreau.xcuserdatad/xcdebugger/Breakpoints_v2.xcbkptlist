@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProjetP3/Team/Team.swift"
-            timestampString = "572299481.1655231"
+            timestampString = "572354098.790877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "isTeamdead()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "isCharacterAlone()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

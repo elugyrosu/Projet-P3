@@ -10,7 +10,7 @@ import Foundation
 
 class TeamFactory {
     var teams = [Team]()
-    var charactersName = [String]()
+    var charactersName = [String]()     //to check unique character name
     
     private func createCharacter(index: Int) -> Character? {
         var choice = 0
@@ -56,7 +56,6 @@ class TeamFactory {
             characters.append(character)
             charactersName.append(character.characterName)
         }
-        
         return characters
     }
     private func createTeam() -> Team{
@@ -132,12 +131,11 @@ class TeamFactory {
         }while name == ""
         return name
     }
-    
-    func checkAllteams() -> Bool{
+    func isEnd() -> Bool{
         var checkAllteams = false
         var i = 0
         for team in teams{
-            if team.isTeamdead() == false{
+            if team.isTeamDefeat() == false{
                 i += 1
             }
         }
@@ -158,7 +156,7 @@ class TeamFactory {
             print("")
             team.charactersStatus()
             print("")
-        } // inserer characterStatus()
+        }
             print("===============================")
     }
 }

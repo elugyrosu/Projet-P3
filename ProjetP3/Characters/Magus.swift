@@ -13,7 +13,7 @@ class Magus: Character {
         super.init(healthMax: 80, health: 80, characterName: name, characterType: "Magus", weapon: PhilospoherStone())
     }
     
-    func treat(treatedHero: Character){
+    func treat(treatedHero: Character){         //same system than attack, use healthMax and power
         treatedHero.health = treatedHero.health + weapon.power
         if treatedHero.health > treatedHero.healthMax{
             treatedHero.health = treatedHero.healthMax

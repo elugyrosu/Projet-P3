@@ -17,14 +17,14 @@ class Character {
     var weapon: Weapon
     
     init(healthMax: Int, health: Int, characterName: String, characterType: String, weapon: Weapon){
-        self.healthMax = health
+        self.healthMax = health // for treat
         self.health = health
         self.characterName = characterName
         self.characterType = characterType
         self.weapon = weapon
     }
 
-    func attack(hero: Character, enemy: Character){
+    func attack(hero: Character, enemy: Character){ // result and print enemy health
         enemy.health = enemy.health - hero.weapon.damage
         if enemy.health <= 0 {
             enemy.health = 0
@@ -36,27 +36,19 @@ class Character {
         print("")
     }
     
-    func isDead() -> Bool{
+    func isDead() -> Bool{ // just for print
         if health<=0{
             print("\(characterName) is dead")
         }
         return isDeadNoPrint()
     }
     
-    func isDeadNoPrint() -> Bool{
+    func isDeadNoPrint() -> Bool{ // just for check
         var isDead = false
         if health<=0{
             isDead = true
         }
         return isDead
     }
-//
-//    func isDead(character: Character) -> Int{
-//        var i = 1
-//        if character.health<=0{
-//            print("\(character.characterName) is dead")
-//            i = 0
-//        }
-//        return i
-//    }
+
 }

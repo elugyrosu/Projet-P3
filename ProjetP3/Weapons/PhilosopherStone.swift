@@ -11,6 +11,6 @@ import Foundation
 class PhilospoherStone: Weapon {
     
     init() {
-        super.init(damage: 5, weaponName: "Philosopher's stone", power: 20)
+        super.init(damage: 2, weaponName: "Philosopher's stone", power: 20)
     }
 }
