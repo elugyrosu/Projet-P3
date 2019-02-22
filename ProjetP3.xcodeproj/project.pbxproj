@@ -21,6 +21,9 @@
 		FF8777112205B2C8004F680E /* Fist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8777102205B2C8004F680E /* Fist.swift */; };
 		FF8777132205B3B3004F680E /* PhilosopherStone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8777122205B3B3004F680E /* PhilosopherStone.swift */; };
 		FF87771522088B07004F680E /* TeamFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87771422088B07004F680E /* TeamFactory.swift */; };
+		FFD04D4E221FF51800E2FDDA /* Merlin's Scepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD04D4D221FF51800E2FDDA /* Merlin's Scepter.swift */; };
+		FFD04D50221FF81000E2FDDA /* HattoriHanzoKatana.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD04D4F221FF81000E2FDDA /* HattoriHanzoKatana.swift */; };
+		FFD04D52221FF9DA00E2FDDA /* ThorHammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD04D51221FF9DA00E2FDDA /* ThorHammer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +54,9 @@
 		FF8777102205B2C8004F680E /* Fist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fist.swift; sourceTree = "<group>"; };
 		FF8777122205B3B3004F680E /* PhilosopherStone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilosopherStone.swift; sourceTree = "<group>"; };
 		FF87771422088B07004F680E /* TeamFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFactory.swift; sourceTree = "<group>"; };
+		FFD04D4D221FF51800E2FDDA /* Merlin's Scepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Merlin's Scepter.swift"; sourceTree = "<group>"; };
+		FFD04D4F221FF81000E2FDDA /* HattoriHanzoKatana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HattoriHanzoKatana.swift; sourceTree = "<group>"; };
+		FFD04D51221FF9DA00E2FDDA /* ThorHammer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThorHammer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,9 @@
 				FF87770E2205B2A2004F680E /* Axe.swift */,
 				FF8777102205B2C8004F680E /* Fist.swift */,
 				FF8777122205B3B3004F680E /* PhilosopherStone.swift */,
+				FFD04D4D221FF51800E2FDDA /* Merlin's Scepter.swift */,
+				FFD04D4F221FF81000E2FDDA /* HattoriHanzoKatana.swift */,
+				FFD04D51221FF9DA00E2FDDA /* ThorHammer.swift */,
 			);
 			path = Weapons;
 			sourceTree = "<group>";
@@ -192,8 +201,10 @@
 			files = (
 				FF8776F922008AF2004F680E /* Colossus.swift in Sources */,
 				FF8364AE21FC681600A6D329 /* main.swift in Sources */,
+				FFD04D4E221FF51800E2FDDA /* Merlin's Scepter.swift in Sources */,
 				FF8777132205B3B3004F680E /* PhilosopherStone.swift in Sources */,
 				FF8776FD22008B0A004F680E /* Warrior.swift in Sources */,
+				FFD04D52221FF9DA00E2FDDA /* ThorHammer.swift in Sources */,
 				FF8776FB22008AFE004F680E /* Dwarf.swift in Sources */,
 				FF8776F522008ADC004F680E /* Character.swift in Sources */,
 				FF87770D2205B28D004F680E /* Sword.swift in Sources */,
@@ -203,6 +214,7 @@
 				FF87770B2205B1A2004F680E /* Weapon.swift in Sources */,
 				FF8776F722008AE7004F680E /* Magus.swift in Sources */,
 				FF87770722011F95004F680E /* Game.swift in Sources */,
+				FFD04D50221FF81000E2FDDA /* HattoriHanzoKatana.swift in Sources */,
 				FF87770F2205B2A2004F680E /* Axe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

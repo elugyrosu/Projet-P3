@@ -11,6 +11,7 @@ import Foundation
 class Game {
     let teamFactory = TeamFactory()
     var teams = [Team]()
+    var roundCount = 0
     
     func start(){
         print("===============================")
@@ -21,7 +22,7 @@ class Game {
         Battle()
     }
     
-    func Battle(){ 
+    func Battle(){
         repeat {
             for i in 0..<teams.count{   
                 let team = teams[i]
@@ -30,6 +31,8 @@ class Game {
                     print("choose the HERO you want to USE:")               // choose Character to use
                     print("")
                     let heroSelected = chooseCharacter(team: team)
+                    randomTreasure(heroSelected: heroSelected)
+                    
                     func chooseEnemy(){                                     // function directly created in Battle() to improve visibility (to much properties)
                         teamNamePrint(team: team)                           // improved for a two player Game, need to be change on a team selection interface if more players
                         print("choose the ENEMY you want to ATTACK")
@@ -43,6 +46,7 @@ class Game {
                             teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
                         }
                     }
+                    
                     if let magus = heroSelected as? Magus{                     // if character selected is a Magus you can treat all characters of your team who are not dead
                         if team.isCharacterAlone() == false{
                             teamNamePrint(team: team)
@@ -54,6 +58,7 @@ class Game {
                     }else {chooseEnemy()}                  // if Character is other type: Attack
                 }
             }
+            roundCount += 1
         } while teamFactory.isEnd() == false // 1 team = end of the battle
     }
     
@@ -105,10 +110,32 @@ class Game {
         if enemy.isDead() == true{
             if teamEnemy.isTeamDefeat() == true{
                 if teams.isEnd() == true{
-                    print("Congratulation \(teamPlayerName) win the party !")
+                    print("Congratulation \(teamPlayerName) win the party in \(roundCount) rounds !")
+                    
                 }
             }
         }
     }
 
+    func randomTreasure(heroSelected: Character) { // random appear chest, scepter for magus, random weapon attack for others
+        
+        let treasure = arc4random_uniform(100) // chest appear 1/5 time, better than Bool.random()
+        if treasure <= 20 {
+            print("Surprise ! a chest appear")
+            if let magus = heroSelected as? Magus{
+                magus.weapon = MerlinScepter()
+                print("\(heroSelected.characterName) get the \(heroSelected.weapon.weaponName)")
+                print("You can treat your friends and give \(heroSelected.weapon.power)PV and if you are alone you can attack with \(heroSelected.weapon.damage)PV damage now !")
+            }else{
+                let newWeapon = Bool.random()   // 50/50
+                if newWeapon == true{
+                    heroSelected.weapon = HattoriHanzoKatana()
+                }else{
+                    heroSelected.weapon = ThorHammer()
+                }
+                print("\(heroSelected.characterName) get the \(heroSelected.weapon.weaponName)")
+                print("You can attack with \(heroSelected.weapon.damage)PV damage now !")
+            }
+        }
+    }
 }

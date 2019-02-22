@@ -17,10 +17,10 @@ class TeamFactory {
         print("")
         print("===============================")
         print("Choose character n°:\(index+1)")
-        print("1 - Warrior: 100 PV - Sword - Dammage: 10")
-        print("2 - Colossus: 150 PV - Fist - Dammage: 5")
-        print("3 - Dwarf: 70 PV - Axe - Dammage: 50")
-        print("4 - Magus: 80 PV - Philosopher's Stone - Healing: +20")
+        print("1 - Warrior: 100 PV - Sword - Damage: 10")
+        print("2 - Colossus: 150 PV - Fist - Damage: 5")
+        print("3 - Dwarf: 70 PV - Axe - Damage: 50")
+        print("4 - Magus: 80 PV - Philosopher's Stone - Healing: +20 - Damage if alone: 2")
         print("===============================")
         repeat {
             if let data = readLine() {
