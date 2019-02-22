@@ -24,6 +24,7 @@ class Game {
     
     func Battle(){
         repeat {
+            roundCount += 1
             for i in 0..<teams.count{   
                 let team = teams[i]
                 if team.isTeamDefeat() == false{           // check if team can play, else go to team after
@@ -58,7 +59,6 @@ class Game {
                     }else {chooseEnemy()}                  // if Character is other type: Attack
                 }
             }
-            roundCount += 1
         } while teamFactory.isEnd() == false // 1 team = end of the battle
     }
     
