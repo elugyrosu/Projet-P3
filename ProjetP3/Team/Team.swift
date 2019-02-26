@@ -9,15 +9,11 @@
 import Foundation
 
 class Team {
-    
     var characters = [Character]()
-    
     let teamName: String
-    
     init(name: String){
         self.teamName = name
     }
-
     func charactersStatus() {
         print("")
         for i in 0..<characters.count {
@@ -50,5 +46,4 @@ class Team {
         }
             return true
     }
-
 }

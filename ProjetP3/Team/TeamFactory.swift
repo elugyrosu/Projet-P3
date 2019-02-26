@@ -32,7 +32,7 @@ class TeamFactory {
         
         switch choice {
         case 1:
-            warriorSelected()
+            warriorSelected() // prints
             let warrior = Warrior(name: uniqueCharacterName())
             return warrior
         case 2:

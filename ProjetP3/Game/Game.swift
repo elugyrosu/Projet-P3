@@ -23,7 +23,6 @@ class Game {
         }
         return timer
     }
-    
     func start(){
         print("===============================")
         print("Welcome to Dot Fantasy")
@@ -32,7 +31,6 @@ class Game {
         teams = teamFactory.teams
         battle()
     }
-    
     func battle(){
         startCounter = Date()
         repeat {
@@ -63,11 +61,9 @@ class Game {
             }
         } while teamFactory.isEnd() == false // 1 team = end of the battle
     }
-    
     func choiceIndex123() -> Int{     // user character choice (Characters selections)
         var choice = 0
         var index = 0
-        
         repeat {
             if let data = readLine() {
                 if let dataToInt = Int(data) {
@@ -119,7 +115,6 @@ class Game {
             }
         }
     }
-    
     func chooseEnemy(team: Team, heroSelected: Character, index: Int){                                     // function directly created in Battle() to improve visibility (to much properties)
         teamNamePrint(team: team)                           // improved for a two player Game, need to be change on a team selection interface if more players
         print("choose the ENEMY you want to ATTACK")
@@ -127,15 +122,12 @@ class Game {
         if index == 0{
             let teamEnemy = teamFactory.teams[index+1]
             teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
-            
         }else{
             let teamEnemy = teamFactory.teams[index-1]
             teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
         }
     }
-
     func randomTreasure(heroSelected: Character) { // random appear chest, scepter for magus, random weapon attack for others
-        
         let treasure = Int.random(in: 0...100)  // chest appear 1/5 time, better than Bool.random()    older form: let treasure = arc4random_uniform(100)
         if treasure <= 20 {
             print("Surprise ! a chest appear")

@@ -9,7 +9,6 @@
 import Foundation
 
 class MerlinScepter: Weapon {
-    
     init() {
         super.init(damage: 20, weaponName: "Merlin's Scepter", power: 40)
     }

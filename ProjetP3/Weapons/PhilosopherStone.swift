@@ -9,7 +9,6 @@
 import Foundation
 
 class PhilospoherStone: Weapon {
-    
     init() {
         super.init(damage: 2, weaponName: "Philosopher's stone", power: 20)
     }
