@@ -98,7 +98,7 @@ class Game {
         heroSelected.attack(hero: heroSelected, enemy: enemySelected)
         attackResults(teams: teamFactory, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
     }
-    func teamNamePrint(team: Team){
+   func teamNamePrint(team: Team){
         print("")
         print("===============================")
         print("Team \(team.teamName)")

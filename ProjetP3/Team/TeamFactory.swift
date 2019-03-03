@@ -12,7 +12,7 @@ class TeamFactory {
     var teams = [Team]()
     var charactersName = [String]()     //to check unique character name
     
-    private func createCharacter(index: Int) -> Character? {
+    private func createCharacter(index: Int) -> Character? {        // a Character append after user selection
         var choice = 0
         print("")
         print("===============================")
@@ -22,7 +22,7 @@ class TeamFactory {
         print("3 - Dwarf: 70 PV - Axe - Damage: 50")
         print("4 - Magus: 80 PV - Philosopher's Stone - Healing: +20 - Damage if alone: 2")
         print("===============================")
-        repeat {
+        repeat {                // user Selection
             if let data = readLine() {
                 if let dataToInt = Int(data) {
                     choice = dataToInt
@@ -33,7 +33,7 @@ class TeamFactory {
         switch choice {
         case 1:
             warriorSelected() // prints
-            let warrior = Warrior(name: uniqueCharacterName())
+            let warrior = Warrior(name: uniqueCharacterName()) // selection append
             return warrior
         case 2:
             colossusSelected()
@@ -48,7 +48,7 @@ class TeamFactory {
             return nil
         }
     }
-    private func createCharacters() -> [Character] {
+    private func createCharacters() -> [Character] { // fill the array of characters
         var characters = [Character]()
         
         for i in 0..<3 {
@@ -58,7 +58,7 @@ class TeamFactory {
         }
         return characters
     }
-    private func createTeam() -> Team{
+    private func createTeam() -> Team{ // = a teamName and an array of characters
         let team = Team(name: uniqueTeamName())
         print("===============================")
         print("")
@@ -66,7 +66,7 @@ class TeamFactory {
         team.characters = createCharacters()
         return team
     }
-    func createTeams() {
+    func createTeams() { // fill the array of teams
         for i in 0..<2 {
             print("")
             print("===============================")
@@ -76,7 +76,7 @@ class TeamFactory {
         }
         showAllStats()
     }
-    private func uniqueTeamName() -> String {
+    private func uniqueTeamName() -> String { // check the selection and repeat in a loop
         var name = ""
         repeat {
             print("")
@@ -113,7 +113,7 @@ class TeamFactory {
         print("===============================")
         print("So... you choosed a very old and very heary thing, wearing a purple robe and a purple hat bigger than me ?")
     }
-    private func uniqueCharacterName() -> String {
+    private func uniqueCharacterName() -> String { // check the selection in charactersName array and repeat in a loop
         print("")
         print("===============================")
         print("who is he or she or it (maybe not a binary genre) ?")
@@ -131,7 +131,7 @@ class TeamFactory {
         }while name == ""
         return name
     }
-    func isEnd() -> Bool{
+    func isEnd() -> Bool{ // check if there is more than one active team  to battle
         var checkAllteams = false
         var i = 0
         for team in teams{
@@ -145,7 +145,7 @@ class TeamFactory {
         return checkAllteams
     }
     
-    private func showAllStats() {
+    private func showAllStats() { // Print all teams characters Status
         print("")
         print("===============================")
         print("All characters status")
