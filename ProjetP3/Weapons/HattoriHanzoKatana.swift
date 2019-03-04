@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HattoriHanzoKatana: Weapon{
+class HattoriHanzoKatana: Weapon{ // Bonus for atack characters
     init() {
         super.init(damage: 60, weaponName: "Hattori Hanzo's Katana", power: 0)
     }

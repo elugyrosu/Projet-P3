@@ -8,10 +8,10 @@
 
 import Foundation
 
-class Weapon {
+class Weapon { // all weapons properties
     let weaponName: String
     let damage: Int
-    let power: Int          //only for Magus
+    let power: Int          //only for Magus, used for treat
     
     init (damage: Int, weaponName: String, power: Int){
         self.damage = damage

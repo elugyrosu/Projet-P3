@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ThorHammer: Weapon{
+class ThorHammer: Weapon{ // Bonus for attack characters
     init() {
         super.init(damage: 80, weaponName: "Thor's Hammer", power: 0)
     }

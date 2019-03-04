@@ -11,10 +11,10 @@ import Foundation
 class Game {
     let teamFactory = TeamFactory()
     var teams = [Team]()
-    var roundCount = 0
-    var startCounter: Date?
+    var roundCount = 0 // Bonus
+    var startCounter: Date? // Bonus
     
-    private func showTimer(startBattleDate: Date) -> String{
+    private func showTimer(startBattleDate: Date) -> String{    // Bonus: Timer
         let interval = Date().timeIntervalSince(startBattleDate as Date)
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .short
@@ -32,9 +32,9 @@ class Game {
         battle()
     }
     private func battle(){
-        startCounter = Date()
+        startCounter = Date() // Bonus
         repeat {
-            roundCount += 1
+            roundCount += 1 // Bonus
             for i in 0..<teams.count{   
                 let team = teams[i]
                 if team.isTeamDead() == false{           // check if team can play, else go to team after
@@ -42,7 +42,7 @@ class Game {
                     print("choose the HERO you want to USE:")               // choose Character to use
                     print("")
                     let heroSelected = chooseCharacter(team: team)
-                    randomTreasure(heroSelected: heroSelected) // a chest appear !!
+                    randomTreasure(heroSelected: heroSelected) // a chest appear !! random
                     
                     if let magus = heroSelected as? Magus{                     // if character selected is a Magus you can treat all characters of your team who are not dead
                         if team.isCharacterAlone() == true{
@@ -59,7 +59,7 @@ class Game {
                     }
                 }
             }
-        } while teamFactory.isEnd() == false // 1 team = end of the battle
+        } while teamFactory.isEnd() == false // 1 team less = end of the battle
     }
     private func chooseCharacter(team: Team) -> Character{
         team.charactersStatus()                                 // Just prints with stats and DEAD
@@ -93,7 +93,7 @@ class Game {
         }
         return index
     }
-    private func teamNamePrint(team: Team){
+    private func teamNamePrint(team: Team){ // just a Print
         print("")
         print("===============================")
         print("Team \(team.teamName)")
@@ -119,7 +119,7 @@ class Game {
             }
         }
     }
-    private func chooseAndAttack(team: Team, heroSelected: Character, index: Int){                                     // function directly created in Battle() to improve visibility (to much properties)
+    private func chooseAndAttack(team: Team, heroSelected: Character, index: Int){
         teamNamePrint(team: team)                           // improved for a two player Game, need to be change on a team selection interface if more players
         print("choose the ENEMY you want to ATTACK")
         print("")
@@ -136,7 +136,7 @@ class Game {
         heroSelected.attack(hero: heroSelected, enemy: enemySelected)
         attackResults(teams: teamFactory, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
     }
-    private func attackResults(teams: TeamFactory, enemy: Character, teamEnemy: Team, teamPlayerName: String){      //check and print: enemy dead, team defeat and winner
+    private func attackResults(teams: TeamFactory, enemy: Character, teamEnemy: Team, teamPlayerName: String){      //check and print: enemy death, team defeat and winner/roundCount/timer
         if enemy.isDead() == true{
             if teamEnemy.isTeamDead() == true{
                 if teams.isEnd() == true{

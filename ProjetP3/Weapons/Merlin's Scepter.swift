@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MerlinScepter: Weapon {
+class MerlinScepter: Weapon { // Bonus for Magus
     init() {
         super.init(damage: 20, weaponName: "Merlin's Scepter", power: 40)
     }
