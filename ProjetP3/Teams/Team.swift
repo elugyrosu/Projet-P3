@@ -21,7 +21,7 @@ class Team {
             if character.isDeadNoPrint(){
                 print("\(i+1) - [DEAD] \(character.characterName) [DEAD]")
             }else{
-            print("\(i+1) - \(character.characterName) (Type: \(character.characterType) - Health: \(character.health)/\(character.healthMax)PV - Weapon: \(character.weapon.weaponName) - Damage: \(character.weapon.damage))")
+                print("\(i+1) - \(character.characterName) (Type: \(character.characterType) - Health: \(character.health)/\(character.healthMax)PV - Weapon: \(character.weapon.weaponName) - Damage: \(character.weapon.damage) - power: \(character.weapon.power)")
             }
         }
     }
@@ -38,7 +38,7 @@ class Team {
         }
         return check
     }
-    func isTeamDefeat() -> Bool{ // check if the team can play or not
+    func isTeamDead() -> Bool{ // check if the team can play or not
         for character in characters{
             if character.isDeadNoPrint() == false{
                 return false

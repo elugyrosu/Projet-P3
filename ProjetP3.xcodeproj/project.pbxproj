@@ -89,11 +89,11 @@
 		FF8364AC21FC681600A6D329 /* ProjetP3 */ = {
 			isa = PBXGroup;
 			children = (
-				FF8777082203062F004F680E /* Weapons */,
 				FF87770922030670004F680E /* Game */,
-				FF8364AD21FC681600A6D329 /* main.swift */,
-				FF8776FE22009147004F680E /* Team */,
+				FF8776FE22009147004F680E /* Teams */,
 				FF8776F322008AAB004F680E /* Characters */,
+				FF8777082203062F004F680E /* Weapons */,
+				FF8364AD21FC681600A6D329 /* main.swift */,
 			);
 			path = ProjetP3;
 			sourceTree = "<group>";
@@ -110,13 +110,13 @@
 			path = Characters;
 			sourceTree = "<group>";
 		};
-		FF8776FE22009147004F680E /* Team */ = {
+		FF8776FE22009147004F680E /* Teams */ = {
 			isa = PBXGroup;
 			children = (
 				FF8776FF22009155004F680E /* Team.swift */,
 				FF87771422088B07004F680E /* TeamFactory.swift */,
 			);
-			path = Team;
+			path = Teams;
 			sourceTree = "<group>";
 		};
 		FF8777082203062F004F680E /* Weapons */ = {

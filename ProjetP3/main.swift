@@ -10,7 +10,6 @@ import Foundation
 
 
 let newGame = Game()
-
 newGame.start()
 
 
