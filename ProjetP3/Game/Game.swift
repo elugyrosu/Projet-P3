@@ -14,7 +14,7 @@ class Game {
     var roundCount = 0 // Bonus
     var startCounter: Date? // Bonus
     
-    private func showTimer(startBattleDate: Date) -> String{    // Bonus: Timer
+    private func showTimer(startBattleDate: Date) -> String{      // Bonus: Timer
         let interval = Date().timeIntervalSince(startBattleDate as Date)
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .short
@@ -23,6 +23,7 @@ class Game {
         }
         return timer
     }
+    
     func start(){
         print("===============================")
         print("Welcome to Dot Fantasy")
@@ -31,10 +32,11 @@ class Game {
         teams = teamFactory.teams
         battle()
     }
+    
     private func battle(){
         startCounter = Date() // Bonus
         repeat {
-            roundCount += 1 // Bonus
+            roundCount += 1      // Bonus
             for i in 0..<teams.count{   
                 let team = teams[i]
                 if team.isTeamDead() == false{           // check if team can play, else go to team after
@@ -61,6 +63,7 @@ class Game {
             }
         } while teamFactory.isEnd() == false // 1 team less = end of the battle
     }
+    
     private func chooseCharacter(team: Team) -> Character{
         team.charactersStatus()                                 // Just prints with stats and DEAD
         var characterSelected = team.characters[choiceIndex123()]   //first selection
@@ -70,6 +73,7 @@ class Game {
         }
         return characterSelected
     }
+    
     private func choiceIndex123() -> Int{     // user character choice (Characters selections)
         var choice = 0
         var index = 0
@@ -93,12 +97,14 @@ class Game {
         }
         return index
     }
+    
     private func teamNamePrint(team: Team){ // just a Print
         print("")
         print("===============================")
         print("Team \(team.teamName)")
         print("===============================")
     }
+    
     private func randomTreasure(heroSelected: Character) { // random appear chest, scepter for magus, random weapon attack for others
         let treasure = Int.random(in: 0...100)  // chest appear 1/5 time, better than Bool.random()    older form: let treasure = arc4random_uniform(100)
         if treasure <= 20 {
@@ -119,6 +125,7 @@ class Game {
             }
         }
     }
+    
     private func chooseAndAttack(team: Team, heroSelected: Character, index: Int){
         teamNamePrint(team: team)                           // improved for a two player Game, need to be change on a team selection interface if more players
         print("choose the ENEMY you want to ATTACK")
@@ -131,11 +138,13 @@ class Game {
             teamAttack(teamEnemy: teamEnemy, heroSelected: heroSelected, team: team)
         }
     }
+    
     private func teamAttack(teamEnemy: Team, heroSelected: Character, team: Team){ // choise enemy, attack, results and checks
         let enemySelected = chooseCharacter(team: teamEnemy)
         heroSelected.attack(hero: heroSelected, enemy: enemySelected)
         attackResults(teams: teamFactory, enemy: enemySelected, teamEnemy: teamEnemy, teamPlayerName: team.teamName)
     }
+    
     private func attackResults(teams: TeamFactory, enemy: Character, teamEnemy: Team, teamPlayerName: String){      //check and print: enemy death, team defeat and winner/roundCount/timer
         if enemy.isDead() == true{
             if teamEnemy.isTeamDead() == true{

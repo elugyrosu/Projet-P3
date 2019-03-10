@@ -23,6 +23,7 @@ class Character {
         self.characterType = characterType
         self.weapon = weapon
     }
+    
     func attack(hero: Character, enemy: Character){ // result and print enemy health
         enemy.health = enemy.health - hero.weapon.damage
         if enemy.health <= 0 {
@@ -34,6 +35,7 @@ class Character {
         print("\(enemy.characterName)'s health is \(enemy.health)/\(enemy.healthMax) PV now")
         print("")
     }
+    
     func isDeadNoPrint() -> Bool{ // just for check
         var isDead = false
         if health<=0{
@@ -41,6 +43,7 @@ class Character {
         }
         return isDead
     }
+    
     func isDead() -> Bool{ // just for print
         if health<=0{
             print("\(characterName) is dead")

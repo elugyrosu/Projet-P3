@@ -45,9 +45,11 @@ class TeamFactory {
             magusSelected()
             return Magus(name: uniqueCharacterName())
         default:
+            print("An error occured, the character couldn't be created")
             return nil
         }
     }
+    
     private func uniqueCharacterName() -> String { // check the selection in charactersName array and repeat in a loop
         print("")
         print("===============================")
@@ -66,6 +68,7 @@ class TeamFactory {
         }while name == ""
         return name
     }
+    
     private func createCharacters() -> [Character] { // fill the array of characters
         var characters = [Character]()
         
@@ -76,6 +79,7 @@ class TeamFactory {
         }
         return characters
     }
+    
     private func createTeam() -> Team{ // = a teamName and an array of characters
         let team = Team(name: uniqueTeamName())
         print("===============================")
@@ -84,6 +88,7 @@ class TeamFactory {
         team.characters = createCharacters()
         return team
     }
+    
     private func uniqueTeamName() -> String { // check the selection and repeat in a loop
         var name = ""
         repeat {
@@ -101,6 +106,7 @@ class TeamFactory {
         }while name == ""
         return name
     }
+    
     func createTeams() { // fill the array of teams - optimised fot 2 teams
         for i in 0..<2 {
             print("")
@@ -111,26 +117,31 @@ class TeamFactory {
         }
         showAllStats()
     }
+    
     private func warriorSelected(){
         print("")
         print("===============================")
         print("You have a brand new Warrior now")
     }
+    
     private func dwarfSelected() {
         print("")
         print("===============================")
         print("Did you choose the dwarf or the axe ?")
     }
+    
     private func colossusSelected() {
         print("")
         print("===============================")
         print("What a giant ! Good choice but he doesn't know how to fight, I think.")
     }
+    
     private func magusSelected() {
         print("")
         print("===============================")
         print("So... you choosed a very old and very heary thing, wearing a purple robe and a purple hat bigger than me ?")
     }
+    
     func isEnd() -> Bool{ // check if there is more than one active team  to battle
         var checkAllteams = false
         var i = 0
@@ -144,6 +155,7 @@ class TeamFactory {
         }
         return checkAllteams
     }
+    
     private func showAllStats() { // Print all teams characters Status
         print("")
         print("===============================")
@@ -156,18 +168,18 @@ class TeamFactory {
             team.charactersStatus()
             print("")
         }
-            print("===============================")
+        print("===============================")
     }
 }
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
 
 

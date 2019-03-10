@@ -14,6 +14,7 @@ class Team {
     init(name: String){
         self.teamName = name
     }
+    
     func charactersStatus() { // only print the characters Status of the team
         print("")
         for i in 0..<characters.count {
@@ -25,6 +26,7 @@ class Team {
             }
         }
     }
+    
     func isCharacterAlone() -> Bool{ // just for the Magus
         var check = false
         var i = 0
@@ -38,12 +40,13 @@ class Team {
         }
         return check
     }
+    
     func isTeamDead() -> Bool{ // check if the team can play or not
         for character in characters{
             if character.isDeadNoPrint() == false{
                 return false
             }
         }
-            return true
+        return true
     }
 }
