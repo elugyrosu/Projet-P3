@@ -15,7 +15,7 @@ class Game {
     var startCounter: Date? // Bonus
     
     private func showTimer(startBattleDate: Date) -> String{      // Bonus: Timer
-        let interval = Date().timeIntervalSince(startBattleDate as Date)
+        let interval = Date().timeIntervalSince(startBattleDate)
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .short
         guard let timer = formatter.string(from: interval) else {
